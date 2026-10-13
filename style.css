@@ -1,0 +1,127 @@
+/* Modern Web Calculator Interface Design
+   Built with HTML5 and CSS only. */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: #ffffff;
+  --calculator-bg: #000000;
+  --display-bg: #303030;
+  --number-bg: #505050;
+  --clear-bg: #b5b5b5;
+  --operator-bg: #ff9800;
+  --text-light: #f7f7f7;
+  --text-dark: #111111;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-bg);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculator {
+  width: min(100%, 430px);
+  min-height: 700px;
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 30px;
+  background: var(--calculator-bg);
+  border-radius: 30px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+}
+
+.display {
+  min-height: 100px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 13px;
+  background: var(--display-bg);
+  color: var(--text-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 10vw, 58px);
+  font-weight: 700;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 4vw, 22px);
+}
+
+.key {
+  aspect-ratio: 1;
+  min-width: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--number-bg);
+  color: var(--text-light);
+  font: inherit;
+  font-size: clamp(21px, 5.5vw, 30px);
+  cursor: pointer;
+  transition: filter 150ms ease, transform 150ms ease;
+}
+
+.key:hover {
+  filter: brightness(1.18);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.clear {
+  background: var(--clear-bg);
+  color: var(--text-dark);
+}
+
+.operator {
+  background: var(--operator-bg);
+  color: #ffffff;
+}
+
+.zero {
+  grid-column: span 2;
+  aspect-ratio: auto;
+  border-radius: 999px;
+}
+
+.decimal {
+  grid-column: 3;
+}
+
+/* Adjust the calculator for shorter screens and small phones. */
+@media (max-width: 360px) {
+  .calculator {
+    min-height: 620px;
+    padding: 22px 14px;
+    gap: 24px;
+  }
+
+  .keypad {
+    gap: 12px;
+  }
+}
+
+@media (min-height: 850px) {
+  .calculator {
+    min-height: 760px;
+  }
+}
